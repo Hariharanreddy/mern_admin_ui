@@ -1,10 +1,11 @@
 import { it, describe, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '../../test/utils/renderWithProviders';
 import LoginPage from './login';
 
 describe('Login page', () => {
     it('should render with required fields', () => {
-        render(<LoginPage />);
+        renderWithProviders(<LoginPage />);
         // getBy -> throws an error
         // queryBy -> null
         // findBy -> Async
