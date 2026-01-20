@@ -1,3 +1,11 @@
+export interface ErrorWithResponse {
+    response: {
+      data: {
+        errors: Array<{ message: string }>;
+      };
+    };
+  }
+
 export type Credentials = {
     email: string;
     password: string;

@@ -2,7 +2,7 @@ import { Layout, Card, Space, Form, Input, Checkbox, Button, Flex, Alert } from 
 import { LockFilled, UserOutlined, LockOutlined } from '@ant-design/icons';
 import Logo from '../../components/icons/Logo';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Credentials } from '../../types';
+import { Credentials, ErrorWithResponse } from '../../types';
 import { login, self, logout } from '../../http/api';
 import { useAuthStore } from '../../store';
 import { usePermission } from '../../hooks/usePermission';
@@ -76,13 +76,12 @@ const LoginPage = () => {
                             }}
                             onFinish={(values) => {
                                 mutate({ email: values.username, password: values.password });
-                                console.log(values);
                             }}>
                             {isError && (
                                 <Alert
                                     style={{ marginBottom: 24 }}
                                     type="error"
-                                    message={error?.message}
+                                    message={(error as unknown as ErrorWithResponse).response.data.errors[0].message}
                                 />
                             )}
                             <Form.Item
