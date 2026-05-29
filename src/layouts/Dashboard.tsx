@@ -1,7 +1,7 @@
 import { NavLink, Navigate, Outlet, useLocation } from 'react-router-dom';
 import Icon, { BellFilled } from '@ant-design/icons';
-import { useAuthStore } from '../store';
-import { Avatar, Badge, Dropdown, Flex, Layout, Menu, Space, theme } from 'antd';
+import { useAuthStore, useThemeStore } from '../store';
+import { Avatar, Badge, Dropdown, Flex, Layout, Menu, Space, theme, Switch } from 'antd';
 import { useState } from 'react';
 import Logo from '../components/icons/Logo';
 import Home from '../components/icons/Home';
@@ -11,6 +11,8 @@ import BasketIcon from '../components/icons/BasketIcon';
 import GiftIcon from '../components/icons/GiftIcon';
 import { useMutation } from '@tanstack/react-query';
 import { logout } from '../http/api';
+import Sun from '../components/icons/Sun';
+import Moon from '../components/icons/Moon';
 
 const { Sider, Header, Content, Footer } = Layout;
 
@@ -61,6 +63,7 @@ const getMenuItems = (role: string) => {
 const Dashboard = () => {
     const location = useLocation();
     const { logout: logoutFromStore } = useAuthStore();
+    const { isDarkMode, toggleTheme } = useThemeStore();
 
     const { mutate: logoutMutate } = useMutation({
         mutationKey: ['logout'],
@@ -86,18 +89,26 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Layout style={{ minHeight: '100vh', background: colorBgContainer }}>
+            <Layout style={{ minHeight: '100vh' }}>
                 <Sider
                     collapsible
-                    theme="light"
+                    theme={isDarkMode ? 'dark' : 'light'}
                     collapsed={collapsed}
                     onCollapse={(value) => setCollapsed(value)}>
-                    <div className="logo">
-                        <Logo />
+                    <div
+                        className="logo"
+                        style={{
+                            display: 'flex',
+                            justifyContent: collapsed ? 'center' : 'flex-start',
+                            alignItems: 'center',
+                            padding: collapsed ? '24px 0' : '20px 30px',
+                            transition: 'all 0.2s',
+                        }}>
+                        <Logo collapsed={collapsed} />
                     </div>
 
                     <Menu
-                        theme="light"
+                        theme={isDarkMode ? 'dark' : 'light'}
                         defaultSelectedKeys={[location.pathname]}
                         mode="inline"
                         items={items}
@@ -110,16 +121,22 @@ const Dashboard = () => {
                             paddingRight: '16px',
                             background: colorBgContainer,
                         }}>
-                        <Flex gap="middle" align="start" justify="space-between">
+                        <Flex gap="middle" align="center" justify="space-between">
                             <Badge
                                 text={
                                     user.role === 'admin' ? 'You are an admin' : user.tenant?.name
                                 }
                                 status="success"
                             />
-                            <Space size={16}>
+                            <Space size={16} align="center">
+                                <Switch
+                                    checked={isDarkMode}
+                                    onChange={toggleTheme}
+                                    checkedChildren={<Icon component={Moon} />}
+                                    unCheckedChildren={<Icon component={Sun} />}
+                                />
                                 <Badge dot={true}>
-                                    <BellFilled />
+                                    <BellFilled style={{ fontSize: 16, cursor: 'pointer' }} />
                                 </Badge>
                                 <Dropdown
                                     menu={{
@@ -136,6 +153,7 @@ const Dashboard = () => {
                                         style={{
                                             backgroundColor: '#fde3cf',
                                             color: '#f56a00',
+                                            cursor: 'pointer',
                                         }}>
                                         U
                                     </Avatar>

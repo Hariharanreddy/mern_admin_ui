@@ -149,6 +149,16 @@ From the individual order details page (`/orders/:orderId`), managers can change
 
 ---
 
+### 🌗 4. Dark & Light Mode Theme Support
+
+The application fully integrates a seamless **Dark & Light Mode theme switcher**, conforming to modern design aesthetics and enhancing usability in low-light restaurant environments.
+
+* **Zustand-Powered Preference Storage**: The active theme preference (`isDarkMode`) is managed inside the centralized state store (`useThemeStore`) and persisted locally using Zustand's `persist` middleware, so the selected mode remains active across pages and browser refreshes.
+* **Ant Design v5 CSS-in-JS Integration**: Swapping the theme toggles the active design algorithm inside `<ConfigProvider>` between `theme.defaultAlgorithm` and `theme.darkAlgorithm`. All Ant Design tokens, colors, borders, and backgrounds dynamically morph at runtime with smooth transitions.
+* **Component-Level Theme Awareness**: Structural elements like the collapsible **Sider** and **Menu** automatically transition their internal styles (`dark` vs `light` mode) to match the dark aesthetic perfectly. A custom toggler switch equipped with Sun/Moon icons is beautifully placed inside the global dashboard Header.
+
+---
+
 ## 🛠️ Technological Stack Breakdown
 
 | Technology / Library | Purpose | Highlights in this Project |
