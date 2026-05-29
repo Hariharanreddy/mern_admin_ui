@@ -70,7 +70,7 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
                             <Row gutter={20}>
                                 <Col span={12}>
                                     <Form.Item
-                                        label="Passoword"
+                                        label="Password"
                                         name="password"
                                         rules={[
                                             {
