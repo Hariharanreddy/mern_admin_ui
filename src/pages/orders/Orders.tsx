@@ -118,7 +118,7 @@ const Orders = () => {
                     queryClient.setQueryData(['orders'], (old: Order[]) => [data.data, ...old]);
                     messageApi.open({
                         type: 'success',
-                        content: 'New Order Received.',
+                        content: '🎁 New Gift Order Received!',
                     });
                 }
 

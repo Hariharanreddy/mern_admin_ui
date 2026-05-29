@@ -18,8 +18,10 @@ const MainApp = () => {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#F65F42',
-                    colorLink: '#F65F42',
+                    colorPrimary: '#7C3AED',
+                    colorLink: '#7C3AED',
+                    colorSuccess: '#10B981',
+                    borderRadius: 8,
                 },
                 algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
             }}>

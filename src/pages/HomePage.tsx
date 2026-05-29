@@ -9,44 +9,44 @@ const { Title, Text } = Typography;
 
 const list = [
     {
-        OrderSummary: 'Peperoni, Margarita ...',
-        address: 'Bandra, Mumbai',
-        amount: 1200,
-        status: 'preparing',
+        OrderSummary: 'Crystal Vase, Silk Scarf ...',
+        address: 'Indiranagar, Bangalore',
+        amount: 3500,
+        status: 'packing',
         loading: false,
     },
     {
-        OrderSummary: 'Paneer, Chicken BBQ ...',
-        address: 'Balurghat, West bengal',
-        amount: 2000,
+        OrderSummary: 'Luxury Watch, Perfume Set ...',
+        address: 'Bandra West, Mumbai',
+        amount: 8500,
         status: 'on the way',
         loading: false,
     },
     {
-        OrderSummary: 'Paneer, Chicken BBQ ...',
-        address: 'Balurghat, West bengal',
-        amount: 2000,
+        OrderSummary: 'Handmade Chocolates, Bouquet ...',
+        address: 'Connaught Place, Delhi',
+        amount: 2200,
+        status: 'delivered',
+        loading: false,
+    },
+    {
+        OrderSummary: 'Personalized Mug, Photo Frame ...',
+        address: 'Jubilee Hills, Hyderabad',
+        amount: 1800,
         status: 'on the way',
         loading: false,
     },
     {
-        OrderSummary: 'Paneer, Chicken BBQ ...',
-        address: 'Balurghat, West bengal',
-        amount: 2000,
-        status: 'on the way',
+        OrderSummary: 'Gold Pendant, Gift Hamper ...',
+        address: 'Anna Nagar, Chennai',
+        amount: 12000,
+        status: 'packing',
         loading: false,
     },
     {
-        OrderSummary: 'Paneer, Chicken BBQ ...',
-        address: 'Balurghat, West bengal',
-        amount: 2000,
-        status: 'on the way',
-        loading: false,
-    },
-    {
-        OrderSummary: 'Paneer, Chicken BBQ ...',
-        address: 'Balurghat, West bengal',
-        amount: 2000,
+        OrderSummary: 'Leather Wallet, Sunglasses ...',
+        address: 'Park Street, Kolkata',
+        amount: 4500,
         status: 'on the way',
         loading: false,
     },
@@ -70,7 +70,7 @@ function HomePage() {
     const { user } = useAuthStore();
     return (
         <div>
-            <Title level={4}>Welcome, {user?.firstName} 😀</Title>
+            <Title level={4}>Welcome, {user?.firstName} 🎁</Title>
             <Row className="mt-4" gutter={16}>
                 <Col span={12}>
                     <Row gutter={[16, 16]}>

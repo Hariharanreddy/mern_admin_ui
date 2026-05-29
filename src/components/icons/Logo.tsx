@@ -2,33 +2,64 @@ import { useThemeStore } from '../../store';
 
 const Logo = ({ collapsed = false }: { collapsed?: boolean }) => {
     const { isDarkMode } = useThemeStore();
-    const fill = isDarkMode ? '#ffffff' : '#484848';
+    const fill = isDarkMode ? '#ffffff' : '#1F1F1F';
 
     if (collapsed) {
         return (
             <svg
-                width="23"
-                height="23"
-                viewBox="0 0 23 23"
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <circle cx="11" cy="11" r="7.5" stroke="#F65F42" strokeWidth="7" />
+                <rect x="2" y="2" width="24" height="24" rx="6" fill="#7C3AED" />
+                <path
+                    d="M14 7C14 7 11 7 11 10V12H8V15H11V21H14V15H17V12H14V10C14 9.5 14.5 9 15 9H17V7H14Z"
+                    fill="white"
+                    transform="translate(-1, 0)"
+                />
+                <rect x="8" y="11" width="12" height="2" rx="1" fill="white" />
+                <path
+                    d="M9 13H19V19C19 20.1 18.1 21 17 21H11C9.9 21 9 20.1 9 19V13Z"
+                    fill="white"
+                    fillOpacity="0.3"
+                />
+                <rect x="13" y="7" width="2" height="14" rx="1" fill="white" fillOpacity="0.5" />
             </svg>
         );
     }
 
     return (
         <svg
-            width="93"
-            height="23"
-            viewBox="0 0 93 23"
+            width="120"
+            height="28"
+            viewBox="0 0 120 28"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
+            {/* Gift box icon */}
+            <rect x="2" y="2" width="24" height="24" rx="6" fill="#7C3AED" />
             <path
-                d="M40.322 9.63C40.322 10.434 40.136 11.166 39.764 11.826C39.392 12.474 38.84 12.99 38.108 13.374C37.388 13.758 36.512 13.95 35.48 13.95H33.896V18H29.9V5.256H35.48C37.04 5.256 38.234 5.652 39.062 6.444C39.902 7.236 40.322 8.298 40.322 9.63ZM35.03 10.8C35.858 10.8 36.272 10.41 36.272 9.63C36.272 8.85 35.858 8.46 35.03 8.46H33.896V10.8H35.03ZM45.5855 5.256V18H41.5895V5.256H45.5855ZM51.8182 14.814H56.9302V18H47.3902V14.994L52.4302 8.424H47.3902V5.256H56.9302V8.262L51.8182 14.814ZM63.1561 14.814H68.2681V18H58.7281V14.994L63.7681 8.424H58.7281V5.256H68.2681V8.262L63.1561 14.814ZM78.238 16.074H73.99L73.36 18H69.166L73.828 5.256H78.436L83.08 18H78.868L78.238 16.074ZM77.266 13.068L76.114 9.522L74.962 13.068H77.266Z"
-                fill={fill}
+                d="M14 7C14 7 11 7 11 10V12H8V15H11V21H14V15H17V12H14V10C14 9.5 14.5 9 15 9H17V7H14Z"
+                fill="white"
+                transform="translate(-1, 0)"
             />
-            <circle cx="11" cy="11" r="7.5" stroke="#F65F42" strokeWidth="7" />
+            <rect x="8" y="11" width="12" height="2" rx="1" fill="white" />
+            <path
+                d="M9 13H19V19C19 20.1 18.1 21 17 21H11C9.9 21 9 20.1 9 19V13Z"
+                fill="white"
+                fillOpacity="0.3"
+            />
+            <rect x="13" y="7" width="2" height="14" rx="1" fill="white" fillOpacity="0.5" />
+            {/* "GiftHub" text */}
+            <text
+                x="34"
+                y="19"
+                fontFamily="Inter, system-ui, -apple-system, sans-serif"
+                fontWeight="700"
+                fontSize="15"
+                fill={fill}>
+                GiftHub
+            </text>
         </svg>
     );
 };

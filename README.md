@@ -1,6 +1,6 @@
 # Pizza Delivery Platform — Admin Dashboard UI (`mernspace-c-admin-ui`)
 
-Welcome to the **Pizza Delivery Platform Admin Dashboard**, a premium, state-of-the-art administrative panel designed for franchise owners (Admins) and restaurant branch managers (Managers) to oversee catalog management, track real-time orders, and manage users/restaurants seamlessly.
+Welcome to the **Pizza Delivery Platform Admin Dashboard**, a premium, state-of-the-art administrative panel designed for franchise owners (Admins) and store branch managers (Managers) to oversee catalog management, track real-time orders, and manage users/stores seamlessly.
 
 This frontend application is built on a modern, ultra-responsive tech stack leveraging **React 18**, **TypeScript**, **Vite**, **Ant Design (v5)**, **TanStack React Query (v5)**, **Zustand**, and **Socket.io**.
 
@@ -31,7 +31,7 @@ mernspace-c-admin-ui/
 │   │   ├── login/        # Sign-in page & credential validations (has unit test)
 │   │   ├── orders/       # Order tracking grids, details, and real-time status updates
 │   │   ├── products/     # Dynamic catalog menu management (with image upload)
-│   │   ├── tenants/      # Restaurant franchise registry management
+│   │   ├── tenants/      # store franchise registry management
 │   │   └── users/        # User role administration (Admin, Manager, Customer)
 │   ├── store.ts          # Zustand state store managing global user credentials
 │   ├── types.ts          # Strongly-typed TypeScript interfaces representing domain entities
@@ -86,7 +86,7 @@ sequenceDiagram
 - **Root Layout (`Root.tsx`)**: Mounts first to fetch `/auth/self`. If found, stores user object globally in Zustand store (`useAuthStore`).
 - **Dashboard Layout (`Dashboard.tsx`)**: Redirects users to `/auth/login?returnTo=...` if `user === null`. If logged in, filters sidebar items based on `user.role`:
   - **Managers** only see `Home`, `Products`, `Orders`, and `Promos`.
-  - **Admins** additionally see `Users` and `Restaurants` (Tenants) management options.
+  - **Admins** additionally see `Users` and `stores` (Tenants) management options.
 - **Permission Hook (`usePermission.ts`)**: Ensures only `admin` and `manager` roles can sign in. If a customer attempts to sign in, they are immediately signed out.
 
 ---
@@ -122,7 +122,7 @@ Because menu items contain both binary files (images) and structured JSON config
 
 ### 📈 3. Live Order Tracking (Real-Time Websockets)
 
-To let restaurants prepare orders instantly, the dashboard coordinates with the **Order service** and **Socket.io** gateway.
+To let stores prepare orders instantly, the dashboard coordinates with the **Order service** and **Socket.io** gateway.
 
 ```mermaid
 sequenceDiagram
@@ -151,7 +151,7 @@ From the individual order details page (`/orders/:orderId`), managers can change
 
 ### 🌗 4. Dark & Light Mode Theme Support
 
-The application fully integrates a seamless **Dark & Light Mode theme switcher**, conforming to modern design aesthetics and enhancing usability in low-light restaurant environments.
+The application fully integrates a seamless **Dark & Light Mode theme switcher**, conforming to modern design aesthetics and enhancing usability in low-light store environments.
 
 * **Zustand-Powered Preference Storage**: The active theme preference (`isDarkMode`) is managed inside the centralized state store (`useThemeStore`) and persisted locally using Zustand's `persist` middleware, so the selected mode remains active across pages and browser refreshes.
 * **Ant Design v5 CSS-in-JS Integration**: Swapping the theme toggles the active design algorithm inside `<ConfigProvider>` between `theme.defaultAlgorithm` and `theme.darkAlgorithm`. All Ant Design tokens, colors, borders, and backgrounds dynamically morph at runtime with smooth transitions.
@@ -223,8 +223,8 @@ The build artifacts will be saved inside the `dist/` directory.
 ## 🔮 Edge Cases & Suggested Next Steps
 
 1. **Dynamic Tenant IDs for Admins**:
-   - *Current Behavior*: The `Orders` list page hardcodes a fallback `TENANT_ID = 10` for admins rather than letting them select which restaurant's orders they'd like to inspect.
-   - *Suggested Improvement*: If `user.role === 'admin'`, render a select dropdown loaded with all registered restaurants (tenants). Selecting a restaurant will update the `tenantId` query parameter in the `orders` fetch query, providing a unified multi-restaurant overview.
+   - *Current Behavior*: The `Orders` list page hardcodes a fallback `TENANT_ID = 10` for admins rather than letting them select which store's orders they'd like to inspect.
+   - *Suggested Improvement*: If `user.role === 'admin'`, render a select dropdown loaded with all registered stores (tenants). Selecting a store will update the `tenantId` query parameter in the `orders` fetch query, providing a unified multi-store overview.
 2. **Search Debounce Integration**:
    - Search parameters (like `q`) on the users, tenants, and products lists have a built-in 500ms debounce buffer (using Lodash's `debounce`). This successfully saves backend resources and limits redundant request rates when admins type search strings.
 3. **Graceful Error Handling in Forms**:

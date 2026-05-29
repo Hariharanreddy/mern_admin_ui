@@ -10,8 +10,8 @@ type ProductsFilterProps = {
 
 const ProductsFilter = ({ children }: ProductsFilterProps) => {
     const { user } = useAuthStore();
-    const { data: restaurants } = useQuery({
-        queryKey: ['restaurants'],
+    const { data: stores } = useQuery({
+        queryKey: ['stores'],
         queryFn: () => {
             return getTenants(`perPage=100&currentPage=1`);
         },
@@ -57,13 +57,13 @@ const ProductsFilter = ({ children }: ProductsFilterProps) => {
                                     <Select
                                         style={{ width: '100%' }}
                                         allowClear={true}
-                                        placeholder="Select restaurant">
-                                        {restaurants?.data.data.map((restaurant: Tenant) => {
+                                        placeholder="Select store">
+                                        {stores?.data.data.map((store: Tenant) => {
                                             return (
                                                 <Select.Option
-                                                    key={restaurant.id}
-                                                    value={restaurant.id}>
-                                                    {restaurant.name}
+                                                    key={store.id}
+                                                    value={store.id}>
+                                                    {store.name}
                                                 </Select.Option>
                                             );
                                         })}
@@ -75,7 +75,7 @@ const ProductsFilter = ({ children }: ProductsFilterProps) => {
                         <Col span={6}>
                             <Space>
                                 <Form.Item name="isPublish">
-                                    <Switch defaultChecked={false} onChange={() => {}} />
+                                    <Switch defaultChecked={false} onChange={() => { }} />
                                 </Form.Item>
                                 <Typography.Text style={{ marginBottom: 22, display: 'block' }}>
                                     Show only published

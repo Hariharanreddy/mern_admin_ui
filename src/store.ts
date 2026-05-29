@@ -42,7 +42,7 @@ export const useThemeStore = create<ThemeState>()(
             toggleTheme: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
         }),
         {
-            name: 'mernspace-pizza-theme',
+            name: 'gifthub-admin-theme',
         }
     )
 );

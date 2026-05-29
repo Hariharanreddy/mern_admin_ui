@@ -19,8 +19,8 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
         },
     });
 
-    const { data: restaurants } = useQuery({
-        queryKey: ['restaurants'],
+    const { data: stores } = useQuery({
+        queryKey: ['stores'],
         queryFn: () => {
             return getTenants(`perPage=100&currentPage=1`);
         },
@@ -59,7 +59,7 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                                         size="large"
                                         style={{ width: '100%' }}
                                         allowClear={true}
-                                        onChange={() => {}}
+                                        onChange={() => { }}
                                         placeholder="Select category">
                                         {categories?.data.map((category: Category) => (
                                             <Select.Option value={category._id} key={category._id}>
@@ -101,21 +101,21 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                             <Row gutter={24}>
                                 <Col span={24}>
                                     <Form.Item
-                                        label="Restaurant"
+                                        label="Store"
                                         name="tenantId"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Restaurant is required',
+                                                message: 'Store is required',
                                             },
                                         ]}>
                                         <Select
                                             size="large"
                                             style={{ width: '100%' }}
                                             allowClear={true}
-                                            onChange={() => {}}
-                                            placeholder="Select restaurant">
-                                            {restaurants?.data.data.map((tenant: Tenant) => (
+                                            onChange={() => { }}
+                                            placeholder="Select store">
+                                            {stores?.data.data.map((tenant: Tenant) => (
                                                 <Select.Option
                                                     value={String(tenant.id)}
                                                     key={tenant.id}>
@@ -139,7 +139,7 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                                     <Form.Item name="isPublish">
                                         <Switch
                                             defaultChecked={false}
-                                            onChange={() => {}}
+                                            onChange={() => { }}
                                             checkedChildren="Yes"
                                             unCheckedChildren="No"
                                         />

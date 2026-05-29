@@ -9,6 +9,7 @@ import UserIcon from '../components/icons/UserIcon';
 import { foodIcon } from '../components/icons/FoodIcon';
 import BasketIcon from '../components/icons/BasketIcon';
 import GiftIcon from '../components/icons/GiftIcon';
+import StoreIcon from '../components/icons/StoreIcon';
 import { useMutation } from '@tanstack/react-query';
 import { logout } from '../http/api';
 import Sun from '../components/icons/Sun';
@@ -49,9 +50,9 @@ const getMenuItems = (role: string) => {
             label: <NavLink to="/users">Users</NavLink>,
         });
         menus.splice(2, 0, {
-            key: '/restaurants',
-            icon: <Icon component={foodIcon} />,
-            label: <NavLink to="/restaurants">Restaurants</NavLink>,
+            key: '/stores',
+            icon: <Icon component={StoreIcon} />,
+            label: <NavLink to="/stores">Stores</NavLink>,
         });
 
         return menus;
@@ -151,8 +152,8 @@ const Dashboard = () => {
                                     placement="bottomRight">
                                     <Avatar
                                         style={{
-                                            backgroundColor: '#fde3cf',
-                                            color: '#f56a00',
+                                            backgroundColor: '#EDE9FE',
+                                            color: '#7C3AED',
                                             cursor: 'pointer',
                                         }}>
                                         U
@@ -164,7 +165,7 @@ const Dashboard = () => {
                     <Content style={{ margin: '24px' }}>
                         <Outlet />
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Mernspace pizza shop</Footer>
+                    <Footer style={{ textAlign: 'center' }}>GiftHub — Premium Gift Commerce</Footer>
                 </Layout>
             </Layout>
         </div>

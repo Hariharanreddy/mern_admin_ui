@@ -124,7 +124,7 @@ const Tenants = () => {
                 <Flex justify="space-between">
                     <Breadcrumb
                         separator={<RightOutlined />}
-                        items={[{ title: <Link to="/">Dashboard</Link> }, { title: 'Tenants' }]}
+                        items={[{ title: <Link to="/">Dashboard</Link> }, { title: 'Stores' }]}
                     />
                     {isFetching && (
                         <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
@@ -138,7 +138,7 @@ const Tenants = () => {
                             type="primary"
                             icon={<PlusOutlined />}
                             onClick={() => setDrawerOpen(true)}>
-                            Add Restaurant
+                            Add Store
                         </Button>
                     </TenantFilter>
                 </Form>
@@ -164,7 +164,7 @@ const Tenants = () => {
                 />
 
                 <Drawer
-                    title="Create restaurant"
+                    title="Create Store"
                     styles={{ body: { backgroundColor: colorBgLayout } }}
                     width={720}
                     destroyOnClose={true}

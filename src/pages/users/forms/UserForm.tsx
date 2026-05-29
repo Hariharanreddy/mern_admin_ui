@@ -102,7 +102,7 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
                                         size="large"
                                         style={{ width: '100%' }}
                                         allowClear={true}
-                                        onChange={() => {}}
+                                        onChange={() => { }}
                                         placeholder="Select role">
                                         <Select.Option value="admin">Admin</Select.Option>
                                         <Select.Option value="manager">Manager</Select.Option>
@@ -112,20 +112,20 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
                             {selectedRole === 'manager' && (
                                 <Col span={12}>
                                     <Form.Item
-                                        label="Restaurant"
+                                        label="Store"
                                         name="tenantId"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Restaurant is required',
+                                                message: 'Store is required',
                                             },
                                         ]}>
                                         <Select
                                             size="large"
                                             style={{ width: '100%' }}
                                             allowClear={true}
-                                            onChange={() => {}}
-                                            placeholder="Select restaurant">
+                                            onChange={() => { }}
+                                            placeholder="Select Store">
                                             {tenants?.data.map((tenant: Tenant) => (
                                                 <Select.Option value={tenant.id} key={tenant.id}>
                                                     {tenant.name}
