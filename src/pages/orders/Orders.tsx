@@ -1,4 +1,4 @@
-import { Breadcrumb, Flex, message, Space, Table, Tag, Typography } from 'antd';
+import { Breadcrumb, Empty, Flex, message, Space, Table, Tag, Typography } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Order, OrderEvents, PaymentMode, PaymentStatus } from '../../types';
@@ -160,7 +160,33 @@ const Orders = () => {
                     />
                 </Flex>
 
-                <Table columns={columns} rowKey={'_id'} dataSource={orders} />
+                <Flex justify="space-between" align="center" style={{ marginTop: 8 }}>
+                    <div>
+                        <Typography.Title level={4} style={{ margin: 0 }}>Orders</Typography.Title>
+                        <Typography.Text type="secondary">Track and manage all gift orders in real-time</Typography.Text>
+                    </div>
+                </Flex>
+
+                <Table
+                    columns={columns}
+                    rowKey={'_id'}
+                    dataSource={orders}
+                    locale={{
+                        emptyText: (
+                            <Empty
+                                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                                description={
+                                    <Space direction="vertical" size={4}>
+                                        <Typography.Text>No orders yet</Typography.Text>
+                                        <Typography.Text type="secondary">
+                                            Orders will appear here as customers place them
+                                        </Typography.Text>
+                                    </Space>
+                                }
+                            />
+                        ),
+                    }}
+                />
             </Space>
         </>
     );

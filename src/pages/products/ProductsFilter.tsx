@@ -23,20 +23,19 @@ const ProductsFilter = ({ children }: ProductsFilterProps) => {
             return getCategories();
         },
     });
-
     return (
-        <Card>
-            <Row justify="space-between">
+        <Card bodyStyle={{ padding: '16px 24px' }}>
+            <Row justify="space-between" align="middle">
                 <Col span={16}>
-                    <Row gutter={20}>
+                    <Row gutter={20} align="middle">
                         <Col span={6}>
-                            <Form.Item name="q">
+                            <Form.Item name="q" style={{ marginBottom: 0 }}>
                                 <Input.Search allowClear={true} placeholder="Search" />
                             </Form.Item>
                         </Col>
 
                         <Col span={6}>
-                            <Form.Item name="categoryId">
+                            <Form.Item name="categoryId" style={{ marginBottom: 0 }}>
                                 <Select
                                     style={{ width: '100%' }}
                                     allowClear={true}
@@ -53,7 +52,7 @@ const ProductsFilter = ({ children }: ProductsFilterProps) => {
                         </Col>
                         {user!.role === 'admin' && (
                             <Col span={6}>
-                                <Form.Item name="tenantId">
+                                <Form.Item name="tenantId" style={{ marginBottom: 0 }}>
                                     <Select
                                         style={{ width: '100%' }}
                                         allowClear={true}
@@ -73,18 +72,18 @@ const ProductsFilter = ({ children }: ProductsFilterProps) => {
                         )}
 
                         <Col span={6}>
-                            <Space>
-                                <Form.Item name="isPublish">
+                            <Space align="center">
+                                <Form.Item name="isPublish" style={{ marginBottom: 0 }}>
                                     <Switch defaultChecked={false} onChange={() => { }} />
                                 </Form.Item>
-                                <Typography.Text style={{ marginBottom: 22, display: 'block' }}>
+                                <Typography.Text>
                                     Show only published
                                 </Typography.Text>
                             </Space>
                         </Col>
                     </Row>
                 </Col>
-                <Col span={8} style={{ display: 'flex', justifyContent: 'end' }}>
+                <Col span={8} style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                     {children}
                 </Col>
             </Row>

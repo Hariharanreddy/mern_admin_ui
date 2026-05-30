@@ -1,4 +1,5 @@
 import { Card, Col, Form, FormInstance, Input, Row, Select, Space, Switch, Typography } from 'antd';
+import { InfoCircleOutlined, PictureOutlined, ShopOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { Category, Tenant } from '../../../types';
 import { useQuery } from '@tanstack/react-query';
@@ -29,8 +30,8 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
     return (
         <Row>
             <Col span={24}>
-                <Space direction="vertical" size="large">
-                    <Card title="Product info" bordered={false}>
+                <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                    <Card title={<Space><InfoCircleOutlined />Product info</Space>} bordered={false}>
                         <Row gutter={20}>
                             <Col span={12}>
                                 <Form.Item
@@ -89,7 +90,7 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                             </Col>
                         </Row>
                     </Card>
-                    <Card title="Product image" bordered={false}>
+                    <Card title={<Space><PictureOutlined />Product image</Space>} bordered={false}>
                         <Row gutter={20}>
                             <Col span={12}>
                                 <ProductImage initialImage={form.getFieldValue('image')} />
@@ -97,7 +98,7 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                         </Row>
                     </Card>
                     {user?.role !== 'manager' && (
-                        <Card title="Tenant info" bordered={false}>
+                        <Card title={<Space><ShopOutlined />Store info</Space>} bordered={false}>
                             <Row gutter={24}>
                                 <Col span={24}>
                                     <Form.Item
@@ -132,7 +133,7 @@ const ProductForm = ({ form }: { form: FormInstance }) => {
                     {selectedCategory && <Pricing selectedCategory={selectedCategory} />}
                     {selectedCategory && <Attributes selectedCategory={selectedCategory} />}
 
-                    <Card title="Other properties" bordered={false}>
+                    <Card title={<Space><SettingOutlined />Other properties</Space>} bordered={false}>
                         <Row gutter={24}>
                             <Col span={24}>
                                 <Space>

@@ -1,4 +1,5 @@
 import { Card, Col, Form, Input, Row, Select, Space } from 'antd';
+import { UserOutlined, SafetyOutlined, TeamOutlined, ShopOutlined } from '@ant-design/icons';
 import { getTenants } from '../../../http/api';
 import { useQuery } from '@tanstack/react-query';
 import { Tenant } from '../../../types';
@@ -17,8 +18,8 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
     return (
         <Row>
             <Col span={24}>
-                <Space direction="vertical" size="large">
-                    <Card title="Basic info" bordered={false}>
+                <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                    <Card title={<Space><UserOutlined />Basic info</Space>} bordered={false}>
                         <Row gutter={20}>
                             <Col span={12}>
                                 <Form.Item
@@ -66,7 +67,7 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
                         </Row>
                     </Card>
                     {!isEditMode && (
-                        <Card title="Security info" bordered={false}>
+                        <Card title={<Space><SafetyOutlined />Security info</Space>} bordered={false}>
                             <Row gutter={20}>
                                 <Col span={12}>
                                     <Form.Item
@@ -85,7 +86,7 @@ const UserForm = ({ isEditMode = false }: { isEditMode: boolean }) => {
                         </Card>
                     )}
 
-                    <Card title="Role" bordered={false}>
+                    <Card title={<Space><TeamOutlined />Role</Space>} bordered={false}>
                         <Row gutter={20}>
                             <Col span={12}>
                                 <Form.Item

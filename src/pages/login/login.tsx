@@ -1,4 +1,4 @@
-import { Layout, Card, Space, Form, Input, Checkbox, Button, Flex, Alert } from 'antd';
+import { Layout, Card, Space, Form, Input, Checkbox, Button, Flex, Alert, Typography, ConfigProvider, theme } from 'antd';
 import { LockFilled, UserOutlined, LockOutlined } from '@ant-design/icons';
 import Logo from '../../components/icons/Logo';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -53,23 +53,65 @@ const LoginPage = () => {
     });
 
     return (
-        <>
-            <Layout style={{ height: '100vh', display: 'grid', placeItems: 'center' }}>
-                <Space direction="vertical" align="center" size="large">
-                    <Layout.Content
-                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Logo />
-                    </Layout.Content>
+        <div className="login-container">
+            {/* Drifting Background Glow Orbs */}
+            <div className="glow-orb-1"></div>
+            <div className="glow-orb-2"></div>
+            
+            <Space direction="vertical" align="center" size="large" style={{ position: 'relative', zIndex: 2 }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginBottom: 8,
+                    }}>
+                    <Logo textColor="#ffffff" />
+                </div>
+                
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorPrimary: '#7C3AED',
+                            colorLink: '#7C3AED',
+                            colorSuccess: '#10B981',
+                            borderRadius: 12,
+                            colorBgContainer: 'rgba(15, 23, 42, 0.75)',
+                            colorText: '#FFFFFF',
+                            colorTextSecondary: '#94A3B8',
+                        },
+                        algorithm: theme.darkAlgorithm,
+                    }}
+                >
                     <Card
                         bordered={false}
-                        style={{ width: 300 }}
+                        className="login-card-premium"
+                        style={{ width: 380 }}
                         title={
                             <Space
-                                style={{ width: '100%', fontSize: 16, justifyContent: 'center' }}>
-                                <LockFilled />
+                                style={{
+                                    width: '100%',
+                                    fontSize: 16,
+                                    justifyContent: 'center',
+                                    paddingTop: 8,
+                                    color: '#FFFFFF',
+                                    fontWeight: 600,
+                                }}>
+                                <LockFilled style={{ color: '#7C3AED' }} />
                                 Sign in
                             </Space>
                         }>
+                        <Typography.Text
+                            type="secondary"
+                            style={{
+                                display: 'block',
+                                textAlign: 'center',
+                                marginBottom: 24,
+                                fontSize: 13,
+                                color: '#94A3B8',
+                            }}>
+                            Sign in to your GiftHub admin account
+                        </Typography.Text>
                         <Form
                             initialValues={{
                                 remember: true,
@@ -79,8 +121,9 @@ const LoginPage = () => {
                             }}>
                             {isError && (
                                 <Alert
-                                    style={{ marginBottom: 24 }}
+                                    style={{ marginBottom: 24, borderRadius: 8 }}
                                     type="error"
+                                    showIcon
                                     message={(error as unknown as ErrorWithResponse).response.data.errors[0].message}
                                 />
                             )}
@@ -96,7 +139,11 @@ const LoginPage = () => {
                                         message: 'Email is not valid',
                                     },
                                 ]}>
-                                <Input prefix={<UserOutlined />} placeholder="Username" />
+                                <Input
+                                    size="large"
+                                    prefix={<UserOutlined style={{ color: '#64748B' }} />}
+                                    placeholder="Email address"
+                                />
                             </Form.Item>
                             <Form.Item
                                 name="password"
@@ -106,17 +153,21 @@ const LoginPage = () => {
                                         message: 'Please input your password',
                                     },
                                 ]}>
-                                <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+                                <Input.Password
+                                    size="large"
+                                    prefix={<LockOutlined style={{ color: '#64748B' }} />}
+                                    placeholder="Password"
+                                />
                             </Form.Item>
-                            <Flex justify="space-between">
-                                <Form.Item name="remember" valuePropName="checked">
-                                    <Checkbox>Remember me</Checkbox>
+                            <Flex justify="space-between" align="center" style={{ marginBottom: 20 }}>
+                                <Form.Item name="remember" valuePropName="checked" noStyle>
+                                    <Checkbox style={{ color: '#94A3B8' }}>Remember me</Checkbox>
                                 </Form.Item>
-                                <a href="" id="login-form-forgot">
+                                <a href="" id="login-form-forgot" style={{ color: '#A78BFA', fontWeight: 500 }}>
                                     Forgot password
                                 </a>
                             </Flex>
-                            <Form.Item>
+                            <Form.Item style={{ marginBottom: 0 }}>
                                 <Button
                                     type="primary"
                                     htmlType="submit"
@@ -127,9 +178,13 @@ const LoginPage = () => {
                             </Form.Item>
                         </Form>
                     </Card>
-                </Space>
-            </Layout>
-        </>
+                </ConfigProvider>
+                
+                <div className="login-footer">
+                    GiftHub eCommerce Admin Console • Secure Panel
+                </div>
+            </Space>
+        </div>
     );
 };
 

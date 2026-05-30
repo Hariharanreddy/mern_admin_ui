@@ -2,6 +2,7 @@ import {
     Breadcrumb,
     Button,
     Drawer,
+    Empty,
     Flex,
     Form,
     Space,
@@ -178,6 +179,13 @@ const Users = () => {
                     {isError && <Typography.Text type="danger">{error.message}</Typography.Text>}
                 </Flex>
 
+                <Flex justify="space-between" align="center" style={{ marginTop: 8 }}>
+                    <div>
+                        <Typography.Title level={4} style={{ margin: 0 }}>Users</Typography.Title>
+                        <Typography.Text type="secondary">Manage admin and store manager accounts</Typography.Text>
+                    </div>
+                </Flex>
+
                 <Form form={filterForm} onFieldsChange={onFilterChange}>
                     <UsersFilter>
                         <Button
@@ -228,6 +236,21 @@ const Users = () => {
                             console.log(total, range);
                             return `Showing ${range[0]}-${range[1]} of ${total} items`;
                         },
+                    }}
+                    locale={{
+                        emptyText: (
+                            <Empty
+                                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                                description={
+                                    <Space direction="vertical" size={4}>
+                                        <Typography.Text>No users found</Typography.Text>
+                                        <Typography.Text type="secondary">
+                                            Add team members to manage your gift stores
+                                        </Typography.Text>
+                                    </Space>
+                                }
+                            />
+                        ),
                     }}
                 />
 

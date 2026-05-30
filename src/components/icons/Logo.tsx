@@ -1,8 +1,8 @@
 import { useThemeStore } from '../../store';
 
-const Logo = ({ collapsed = false }: { collapsed?: boolean }) => {
+const Logo = ({ collapsed = false, textColor }: { collapsed?: boolean; textColor?: string }) => {
     const { isDarkMode } = useThemeStore();
-    const fill = isDarkMode ? '#ffffff' : '#1F1F1F';
+    const fill = textColor || (isDarkMode ? '#ffffff' : '#1F1F1F');
 
     if (collapsed) {
         return (

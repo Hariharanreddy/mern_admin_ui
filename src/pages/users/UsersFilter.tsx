@@ -5,17 +5,17 @@ type UsersFilterProps = {
 };
 const UsersFilter = ({ children }: UsersFilterProps) => {
     return (
-        <Card>
-            <Row justify="space-between">
+        <Card bodyStyle={{ padding: '16px 24px' }}>
+            <Row justify="space-between" align="middle">
                 <Col span={16}>
                     <Row gutter={20}>
                         <Col span={8}>
-                            <Form.Item name="q">
+                            <Form.Item name="q" style={{ marginBottom: 0 }}>
                                 <Input.Search allowClear={true} placeholder="Search" />
                             </Form.Item>
                         </Col>
                         <Col span={8}>
-                            <Form.Item name="role">
+                            <Form.Item name="role" style={{ marginBottom: 0 }}>
                                 <Select
                                     style={{ width: '100%' }}
                                     allowClear={true}
@@ -40,7 +40,7 @@ const UsersFilter = ({ children }: UsersFilterProps) => {
                         </Col> */}
                     </Row>
                 </Col>
-                <Col span={8} style={{ display: 'flex', justifyContent: 'end' }}>
+                <Col span={8} style={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                     {children}
                 </Col>
             </Row>

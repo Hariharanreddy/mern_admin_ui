@@ -2,6 +2,7 @@ import {
     Breadcrumb,
     Button,
     Drawer,
+    Empty,
     Flex,
     Form,
     Image,
@@ -266,6 +267,13 @@ const Products = () => {
                     {isError && <Typography.Text type="danger">{error.message}</Typography.Text>}
                 </Flex>
 
+                <Flex justify="space-between" align="center" style={{ marginTop: 8 }}>
+                    <div>
+                        <Typography.Title level={4} style={{ margin: 0 }}>Products</Typography.Title>
+                        <Typography.Text type="secondary">Manage your gift catalog and inventory</Typography.Text>
+                    </div>
+                </Flex>
+
                 <Form form={filterForm} onFieldsChange={onFilterChange}>
                     <ProductsFilter>
                         <Button
@@ -318,6 +326,21 @@ const Products = () => {
                             console.log(total, range);
                             return `Showing ${range[0]}-${range[1]} of ${total} items`;
                         },
+                    }}
+                    locale={{
+                        emptyText: (
+                            <Empty
+                                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                                description={
+                                    <Space direction="vertical" size={4}>
+                                        <Typography.Text>No products found</Typography.Text>
+                                        <Typography.Text type="secondary">
+                                            Start by adding your first gift to the catalog
+                                        </Typography.Text>
+                                    </Space>
+                                }
+                            />
+                        ),
                     }}
                 />
 

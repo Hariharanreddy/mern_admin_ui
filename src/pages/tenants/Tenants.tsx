@@ -2,6 +2,7 @@ import {
     Breadcrumb,
     Button,
     Drawer,
+    Empty,
     Flex,
     Form,
     Space,
@@ -132,6 +133,13 @@ const Tenants = () => {
                     {isError && <Typography.Text type="danger">{error.message}</Typography.Text>}
                 </Flex>
 
+                <Flex justify="space-between" align="center" style={{ marginTop: 8 }}>
+                    <div>
+                        <Typography.Title level={4} style={{ margin: 0 }}>Stores</Typography.Title>
+                        <Typography.Text type="secondary">Manage your gift store locations and partners</Typography.Text>
+                    </div>
+                </Flex>
+
                 <Form form={filterForm} onFieldsChange={onFilterChange}>
                     <TenantFilter>
                         <Button
@@ -160,6 +168,21 @@ const Tenants = () => {
                                 };
                             });
                         },
+                    }}
+                    locale={{
+                        emptyText: (
+                            <Empty
+                                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                                description={
+                                    <Space direction="vertical" size={4}>
+                                        <Typography.Text>No stores found</Typography.Text>
+                                        <Typography.Text type="secondary">
+                                            Add your first store to start selling gifts
+                                        </Typography.Text>
+                                    </Space>
+                                }
+                            />
+                        ),
                     }}
                 />
 

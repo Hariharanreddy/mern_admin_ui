@@ -8,6 +8,7 @@ import {
     Row,
     Select,
     Space,
+    Steps,
     Tag,
     Typography,
 } from 'antd';
@@ -101,6 +102,26 @@ const SingleOrder = () => {
                     />
                 </Space>
             </Flex>
+
+            {(() => {
+                const statusSteps = ['received', 'confirmed', 'prepared', 'out_for_delivery', 'delivered'];
+                const currentStep = statusSteps.indexOf(order.orderStatus);
+                return (
+                    <Card bordered={false} style={{ marginBottom: 0 }}>
+                        <Steps
+                            current={currentStep >= 0 ? currentStep : 0}
+                            size="small"
+                            items={[
+                                { title: 'Received' },
+                                { title: 'Confirmed' },
+                                { title: 'Packed' },
+                                { title: 'Shipped' },
+                                { title: 'Delivered' },
+                            ]}
+                        />
+                    </Card>
+                );
+            })()}
 
             <Row gutter={24}>
                 <Col span={14}>

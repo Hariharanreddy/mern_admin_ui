@@ -1,7 +1,7 @@
 import { NavLink, Navigate, Outlet, useLocation } from 'react-router-dom';
 import Icon, { BellFilled } from '@ant-design/icons';
 import { useAuthStore, useThemeStore } from '../store';
-import { Avatar, Badge, Dropdown, Flex, Layout, Menu, Space, theme, Switch } from 'antd';
+import { Avatar, Badge, Dropdown, Flex, Layout, Menu, Space, theme, Switch, Typography } from 'antd';
 import { useState } from 'react';
 import Logo from '../components/icons/Logo';
 import Home from '../components/icons/Home';
@@ -104,6 +104,8 @@ const Dashboard = () => {
                             alignItems: 'center',
                             padding: collapsed ? '24px 0' : '20px 30px',
                             transition: 'all 0.2s',
+                            background: 'linear-gradient(180deg, rgba(124,58,237,0.08) 0%, transparent 100%)',
+                            borderBottom: '1px solid rgba(124,58,237,0.1)',
                         }}>
                         <Logo collapsed={collapsed} />
                     </div>
@@ -143,8 +145,29 @@ const Dashboard = () => {
                                     menu={{
                                         items: [
                                             {
+                                                key: 'profile-header',
+                                                label: (
+                                                    <div style={{ padding: '4px 0' }}>
+                                                        <Typography.Text strong>
+                                                            {user.firstName} {user.lastName}
+                                                        </Typography.Text>
+                                                        <br />
+                                                        <Typography.Text
+                                                            type="secondary"
+                                                            style={{ fontSize: 12 }}>
+                                                            {user.email}
+                                                        </Typography.Text>
+                                                    </div>
+                                                ),
+                                                disabled: true,
+                                            },
+                                            {
+                                                type: 'divider',
+                                            },
+                                            {
                                                 key: 'logout',
                                                 label: 'Logout',
+                                                danger: true,
                                                 onClick: () => logoutMutate(),
                                             },
                                         ],
@@ -155,15 +178,18 @@ const Dashboard = () => {
                                             backgroundColor: '#EDE9FE',
                                             color: '#7C3AED',
                                             cursor: 'pointer',
+                                            fontWeight: 600,
                                         }}>
-                                        U
+                                        {user.firstName?.[0]}{user.lastName?.[0]}
                                     </Avatar>
                                 </Dropdown>
                             </Space>
                         </Flex>
                     </Header>
                     <Content style={{ margin: '24px' }}>
-                        <Outlet />
+                        <div className="page-enter" key={location.pathname}>
+                            <Outlet />
+                        </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>GiftHub — Premium Gift Commerce</Footer>
                 </Layout>

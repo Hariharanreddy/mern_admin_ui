@@ -22,6 +22,8 @@ const MainApp = () => {
                     colorLink: '#7C3AED',
                     colorSuccess: '#10B981',
                     borderRadius: 8,
+                    colorBgLayout: isDarkMode ? '#121214' : '#F1F5F9',
+                    colorBorderSecondary: isDarkMode ? '#2d2d30' : '#E2E8F0',
                 },
                 algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
             }}>
